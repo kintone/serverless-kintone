@@ -1,35 +1,33 @@
 # serverless-kintone
 
-=======
-
-# Description
+## Description
 
 Serverless plugin for integration with kintone.
 
-# Requirements
+## Requirements
 
 - [Serverless Framework](https://github.com/serverless/serverless) 1.0 or higher
 
-# Installation
+## Installation
 
 ```sh
 $ npm install https://github.com/kintone/serverless-kintone --save
 ```
 Sorry, This library is not published to npm registry yet. That will be soon.
 
-# Configuration
+## Configuration
 
-## Encrypt your api token or password by using KMS
+### Encrypt your api token or password by using KMS
 
-We strongly recommend to encrypt your api token and password to store them. The feature will be available when "encrypted" flag is "true" in serverless.yml.
+We strongly recommend to encrypt your api token and password to store them. The feature will be available when `encrypted` flag is `true` in `serverless.yml`.
 
-### 1. Create key on KMS
+#### 1. Create key on KMS
 
 You have to create the KMS key beforehand. See AWS document for details.
 
 http://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html
 
-### 2. Create and attach IAM policy to your serverless service role
+#### 2. Create and attach IAM policy to your serverless service role
 Policy example:
 
 ```json
@@ -49,14 +47,14 @@ Policy example:
 }
 ```
 
-### 3. Encrypt and save the secret to your serverless.yml.
+#### 3. Encrypt and save the secret to your serverless.yml.
 Command example:
 
 ```sh
 $ aws kms encrypt --key-id alias/my-kms-key --region us-east-1 --plaintext YOUR_TOKEN
 ```
 
-## serverless.yml
+### serverless.yml
 
 ```yaml
 provider:
@@ -82,12 +80,12 @@ custom:
       encrypted: true
 ```
 
-## Supported runtimes
-- nodejs4.3
+### Supported runtimes
+- `nodejs4.3`
 
-# Usage
+## Usage
 
-get, post, put, delete, upload and download methods are available.
+`get`, `post`, `put`, `delete`, `upload` and `download` methods are available.
 
 Code example:
 
@@ -117,7 +115,7 @@ module.exports.hello = (event, context, callback) => {
 
 ```
 
-## Download files
+### Download files
 
 ```js
 const app = new Kintone('app1');
@@ -134,7 +132,7 @@ app.get('/k/v1/record', params).then((res) => {
 });
 ```
 
-## Upload files
+### Upload files
 
 ```js
 const app = new Kintone('app1');
@@ -153,10 +151,10 @@ app.upload('/tmp/image.png').then((res) => {
 });
 ```
 
-# Licence
+## Licence
 
 MIT License
 
-# Copyright
+## Copyright
 
 Copyright(c) Cybozu, Inc.
